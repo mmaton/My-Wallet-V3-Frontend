@@ -148,7 +148,7 @@ function BuyCtrl ($scope, $filter, $q, MyWallet, Wallet, MyWalletHelpers, Alerts
       $scope.transaction.btc = currency.formatCurrencyForView($scope.quote.quoteAmount, currency.bitCurrencies[0]);
     };
 
-    let quote = $scope.exchange.getBuyQuote($scope.transaction.fiat, $scope.transaction.currency.code);
+    let quote = $scope.exchange.getBuyQuote(Math.trunc($scope.transaction.fiat * 100), $scope.transaction.currency.code);
     return $q.resolve(quote).then(success, $scope.standardError);
   };
 
